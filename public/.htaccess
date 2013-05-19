@@ -1,0 +1,16 @@
+<IfModule mod_rewrite.c>
+
+	RewriteEngine On
+
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_URI} !^/images/
+	RewriteCond %{REQUEST_URI} !^/emails/
+	RewriteCond %{REQUEST_URI} !^/libraries/
+	RewriteCond %{REQUEST_URI} !^/css
+	RewriteCond %{REQUEST_URI} !^/js
+	RewriteCond %{REQUEST_URI} !^/Favicon.ico
+	RewriteCond %{REQUEST_URI} !^/channel.html
+	RewriteRule ^(.*)$ /?route=$1 [QSA,L]
+
+</IfModule>
