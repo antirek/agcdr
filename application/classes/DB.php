@@ -69,7 +69,7 @@ class DB {
 	 * @access public
 	 */
 	public function __construct() {
-		$this->db =&NewADOConnection($this->db_type);
+		$this->db =NewADOConnection($this->db_type);
 		$this->db->SetFetchMode(ADODB_FETCH_ASSOC);
 		$this->db->PConnect($this->db_host,$this->db_user,$this->db_pass,$this->db_name);
 	}
@@ -155,6 +155,7 @@ class DB {
 		switch ($this->db_type) {
 			
 			case "mysql":
+			case "mysqli":
 				
 				$info = $this->GetRow("SHOW COLUMNS FROM `{$table}` LIKE '{$field}';");
 				preg_match_all("/'(.*?)'/",$info["Type"],$values);

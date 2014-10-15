@@ -16,7 +16,7 @@ define('DEVMODE',true);
 
 // set error reporting
 if (DEVMODE == true) {
-	error_reporting(E_ALL);
+	error_reporting(E_ALL ^ E_STRICT);
 } else {
 	error_reporting(E_ERROR);
 }
@@ -76,12 +76,7 @@ define('DB_TABLE',$_SESSION["servers"][$server]["tablename"]);
 
 // if not the live version, create a label for the version we're running
 if (DEVMODE == true) {
-	exec("svn info ".APP_PATH."/..",$svninfo);
-	$svnpath = explode("/",$svninfo[1]);
-	$devdir = array_pop($svnpath);
-	if ($devdir != "trunk") $devdir = array_pop($svnpath)."/".$devdir;
-	$rev = array_pop(explode(" ",trim($svninfo[4])));
-	define('DEVINFO',"<b>Development:</b> {$devdir} revision {$rev} (v".VERSION.")");
+	define('DEVINFO',"<b>Development:</b> revision v".VERSION);
 }
 
 // register class autoloader function
