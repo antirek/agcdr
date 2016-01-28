@@ -1,0 +1,7 @@
+name: antirek/agcdr
+author:
+  name: Dmitriev Sergey
+  email: antirek@yandex.ru
+  url: 'http://www.antirek.ru'
+copyright: 2015 Dmitriev Sergey
+description: Asterisk CDR statistics with Google charts
